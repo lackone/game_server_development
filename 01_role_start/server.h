@@ -1,6 +1,7 @@
 #ifndef SERVER_H
 #define SERVER_H
 
+#include <cstring>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -52,7 +53,6 @@ public:
                     _roles[cfd] = new Role();
                 } else if (evs[i].events & EPOLLIN) {
                     //客户端发送数据过来
-
                     while (1) {
                         ret = recv(fd, buf, sizeof(buf) - 1, 0);
                         if (ret < 0) {
@@ -67,6 +67,21 @@ public:
                             remove_fd(fd);
                         } else {
                             printf("client data %s\n", buf);
+
+                            //如果服务器收到角色A走路数据
+                            //处理角色A走路
+                            //Role *role = map[fd];
+                            //role->x += 1;
+                            //role->y += 1;
+
+                            //然后广播角色A移动
+                            //const char* msg = "角色A move (x,y)";
+                            //for (const auto& v : _roles) {
+                            //    if (v.first == fd) {
+                            //        continue;
+                            //    }
+                            //    send(v.first, msg, strlen(msg), 0);
+                            //}
                         }
                     }
                 } else if (evs[i].events & EPOLLRDHUP) {
