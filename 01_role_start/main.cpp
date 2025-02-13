@@ -52,7 +52,8 @@ using namespace std;
 //为什么说Actor模型适用于游戏开发呢？
 //对游戏服务端而言，Actor并发模型给游戏业务的分割提供了灵活性。
 
-int main() {
-
+int main(int argc, char *argv[]) {
+    Server srv(argv[1], atoi(argv[2]));
+    srv.start();
     return 0;
 }

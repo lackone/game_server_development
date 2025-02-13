@@ -54,11 +54,14 @@ public:
                     //客户端发送数据过来
 
                     while (1) {
-                        ret = recv(fd, buf, sizeof(buf), 0);
+                        ret = recv(fd, buf, sizeof(buf) - 1, 0);
                         if (ret < 0) {
+                            //表示数据已经读完，break跳出循环，等待下一次触发
                             if (errno == EAGAIN || errno == EWOULDBLOCK) {
                                 break;
                             }
+                            remove_fd(fd);
+                            break;
                         } else if (ret == 0) {
                             //客户端关闭连接
                             remove_fd(fd);
