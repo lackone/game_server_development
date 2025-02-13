@@ -7,3 +7,4 @@ add_executable(game_server_development main.cpp)
 
 
 add_subdirectory(01_role_start)
+add_subdirectory(02_skynet)

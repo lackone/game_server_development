@@ -6,6 +6,6 @@
 
 《百万在线大型游戏服务端开发》 罗培羽 笔记
 ```
-01_role_start
-02_skynet
+01_role_start       从角色走路说起
+02_skynet           skynet入门精要
 ```
