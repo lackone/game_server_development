@@ -3,13 +3,13 @@ local skynet = require "skynet"
 local function new_test(name)
     return setmetatable({}, { __close = function(...)
         skynet.error(...)
-    end, __name = "closemeta:" .. name})
+    end, __name = "closemeta:" .. name })
 end
 
 local i = 0
 skynet.dispatch("lua", function()
     i = i + 1
-    if i==2 then
+    if i == 2 then
         local c<close> = new_test("dispatch_error")
         error("dispatch_error")
     else

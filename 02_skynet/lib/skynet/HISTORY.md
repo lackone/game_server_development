@@ -1,5 +1,6 @@
 v1.8.0 (2025-1-14)
 -----------
+
 * Update Lua to 5.4.7
 * service sessions can be rewind
 * Improve: udp (ipv6 support)
@@ -15,6 +16,7 @@ v1.8.0 (2025-1-14)
 
 v1.7.0 (2023-11-13)
 -----------
+
 * Update Lua to 5.4.6
 * Update lpeg to 1.1.0
 * Improve mongo driver
@@ -23,6 +25,7 @@ v1.7.0 (2023-11-13)
 
 v1.6.0 (2022-11-16)
 -----------
+
 * Update Lua to 5.4.4 (github Nov 8, 2022)
 * Update jemalloc to 5.3.0
 * Update lpeg to 1.0.2 (For sproto)
@@ -32,6 +35,7 @@ v1.6.0 (2022-11-16)
 
 v1.5.0 (2021-11-9)
 -----------
+
 * Update Lua to 5.4.3
 * Fix socket half close issues
 * Fix TLS issues
@@ -43,6 +47,7 @@ v1.5.0 (2021-11-9)
 
 v1.4.0 (2020-11-16)
 -----------
+
 * Update Lua to 5.4.2
 * Add skynet.select
 * Improve mysql driver (@zero-rp @xiaojin @yxt945)
@@ -55,6 +60,7 @@ v1.4.0 (2020-11-16)
 
 v1.3.0 (2019-11-19)
 -----------
+
 * Improve mysql driver (@yxt945)
 * Improve cluster
 * Improve lua shared proto (@hongling0)
@@ -68,6 +74,7 @@ v1.3.0 (2019-11-19)
 
 v1.2.0 (2018-11-6)
 -----------
+
 * Improve cluster support
 * Improve mongodb driver
 * Improve redis driver
@@ -87,11 +94,13 @@ v1.2.0 (2018-11-6)
 
 v1.1.0 (2017-10-31)
 -----------
+
 * add socket.disconnected()
 * fix bugs : see comments for detail
 
 v1.1.0-rc (2017-7-18)
 -----------
+
 * config file : support include
 * debug console : User config binding IP
 * debug console : Add call command
@@ -107,7 +116,7 @@ v1.1.0-rc (2017-7-18)
 * httpc : Add httpc.timeout
 * mongo driver : sort support multi-key
 * bson : Check utf8 string
-* bson : No longer support numeric key 
+* bson : No longer support numeric key
 * daemon mode: Can output the error messages
 * sproto : Support decimal number
 * sproto: Support binary type
@@ -123,10 +132,12 @@ v1.1.0-rc (2017-7-18)
 
 v1.0.0 (2016-7-11)
 -----------
+
 * Version 1.0.0 Released
 
 v1.0.0-rc5 (2016-7-4)
 -----------
+
 * MongoDB : Support auth_scram_sha1
 * MongoDB : Auto determine primary host
 * Bugfix : memory leak in multicast
@@ -135,6 +146,7 @@ v1.0.0-rc5 (2016-7-4)
 
 v1.0.0-rc4 (2016-6-13)
 -----------
+
 * Update lua to 5.3.3
 * Update jemalloc to 4.2.1
 * Add debug console command ping
@@ -144,6 +156,7 @@ v1.0.0-rc4 (2016-6-13)
 
 v1.0.0-rc3 (2016-5-9)
 -----------
+
 * Update jemalloc 4.1.1
 * Update lua 5.3.3 rc1
 * Update sproto to support encoding empty table
@@ -157,6 +170,7 @@ v1.0.0-rc3 (2016-5-9)
 
 v1.0.0-rc2 (2016-3-7)
 -----------
+
 * Fix a bug in lua 5.3.2
 * Update sproto (fix bugs and add ud for package)
 * Fix a bug in http
@@ -166,6 +180,7 @@ v1.0.0-rc2 (2016-3-7)
 
 v1.0.0-rc (2015-12-28)
 -----------
+
 * Update to lua 5.3.2
 * Add skynet.coroutine lib
 * Add new debug api to show c memory used
@@ -179,6 +194,7 @@ v1.0.0-rc (2015-12-28)
 
 v1.0.0-beta (2015-11-10)
 -----------
+
 * Improve and fix bug for sproto
 * Add global short string pool for lua vm
 * Add code cache mode
@@ -198,6 +214,7 @@ v1.0.0-beta (2015-11-10)
 
 v1.0.0-alpha10 (2015-8-17)
 -----------
+
 * Remove the size limit of cluster RPC message.
 * Remove the size limit of local message.
 * Add cluster.query and clsuter.register.
@@ -210,6 +227,7 @@ v1.0.0-alpha10 (2015-8-17)
 
 v1.0.0-alpha9 (2015-8-10)
 -----------
+
 * Improve lua serialization , support pairs metamethod.
 * Bugfix : sproto (See commits log of sproto)
 * Add user log service support (In config)
@@ -217,6 +235,7 @@ v1.0.0-alpha9 (2015-8-10)
 
 v1.0.0-alpha8 (2015-6-29)
 -----------
+
 * Update lua 5.3.1
 * Bugfix: skynet exit issue
 * Bugfix: timer race condition
@@ -226,6 +245,7 @@ v1.0.0-alpha8 (2015-6-29)
 
 v1.0.0-alpha7 (2015-6-8)
 -----------
+
 * console support launch snax service
 * Add cluster.snax
 * Add nodelay in clusterd
@@ -238,6 +258,7 @@ v1.0.0-alpha7 (2015-6-8)
 
 v1.0.0-alpha6 (2015-5-18)
 -----------
+
 * bugfix: httpc.get
 * bugfix: seri lib stack overflow
 * bugfix: udp send
@@ -251,7 +272,8 @@ v1.0.0-alpha6 (2015-5-18)
 
 v1.0.0-alpha5 (2015-4-27)
 -----------
-* merge lua 5.3 official bugfix 
+
+* merge lua 5.3 official bugfix
 * improve sproto rpc api
 * fix a deadlock bug when service retire
 * improve cluster config reload
@@ -260,24 +282,28 @@ v1.0.0-alpha5 (2015-4-27)
 
 v1.0.0-alpha4 (2015-4-13)
 -----------
+
 * sproto can share c struct between states
 * udp api changed (use lua string now)
 * fix memory leak in dns module
 
 v1.0.0-alpha3 (2015-3-30)
 -----------
+
 * Update sproto (bugfix)
 * Add async dns query
 * improve httpc
 
 v1.0.0-alpha2 (2015-3-16)
 -----------
+
 * Update examples client to lua 5.3
 * Patch lua 5.3 to interrupt the dead loop (for debug)
 * Update sproto (fix some bugs and support unordered map)
 
 v1.0.0-alpha (2015-3-9)
 -----------
+
 * Update lua from 5.2 to 5.3
 * Add an online lua debugger
 * Add sharemap as an example use case of stm
@@ -287,6 +313,7 @@ v1.0.0-alpha (2015-3-9)
 
 v0.9.3 (2015-1-5)
 -----------
+
 * Add : mongo createIndex
 * Update : sproto
 * bugfix : sharedata check dirty flag when len/pairs metamethod
@@ -294,12 +321,14 @@ v0.9.3 (2015-1-5)
 
 v0.9.2 (2014-12-8)
 -----------
+
 * Simplify the message queue
 * Add create_index in mongo driver
 * Fix a bug in big-endian architecture (sproto)
 
 v0.9.0 / v0.9.1 (2014-11-17)
 -----------
+
 * Add UDP support
 * Add IPv6 support
 * socket send package can define a release method
@@ -309,6 +338,7 @@ v0.9.0 / v0.9.1 (2014-11-17)
 
 v0.8.1 (2014-11-3)
 -----------
+
 * Send to an invalid remote service will raise an error
 * Bugifx: socket open address string
 * Remove sha1 from mysqlaux
@@ -318,21 +348,25 @@ v0.8.1 (2014-11-3)
 
 v0.8.0 (2014-10-27)
 -----------
+
 * Add mysql client driver
 * Bugfix : skynet.queue
 
 v0.7.4 (2014-10-13)
 -----------
+
 * Bugfix : clear coroutine pool when GC
-* hotfix : A bug introduce by 0.7.3 
+* hotfix : A bug introduce by 0.7.3
 
 v0.7.3 (2014-10-13)
 -----------
+
 * Add some logs (warning) when overload
 * Bugfix: crash on exit
 
 v0.7.2 (2014-9-29)
 -----------
+
 * Bugfix : datacenter.wait
 * Bugfix : error in forker coroutine
 * Add skynet.term
@@ -341,12 +375,14 @@ v0.7.2 (2014-9-29)
 
 v0.7.1 (2014-9-22)
 -----------
+
 * bugfix: wakeup sleep should return BREAK
 * bugfix: sharedatad load string
 * bugfix: dataserver forward error msg
 
 v0.7.0 (2014-9-8)
 -----------
+
 * Use sproto instead of cjson
 * Add message logger
 * Add hmac-sha1
@@ -354,16 +390,19 @@ v0.7.0 (2014-9-8)
 
 v0.6.2 (2014-9-1)
 -----------
+
 * bugfix: only skynet.call response PTYPE_ERROR
 
 v0.6.1 (2014-8-25)
 -----------
+
 * bugfix: datacenter.wakeup
 * change struct msg name to avoid conflict in mac
 * improve seri library
 
 v0.6.0 (2014-8-18)
 -----------
+
 * add sharedata
 * bugfix: service exit before init would not report back
 * add skynet.response and check multicall skynet.ret
@@ -373,7 +412,7 @@ v0.6.0 (2014-8-18)
 * skynet.redirect support string address
 * bugfix: skynet.harbor.link may block
 * add skynet.harbor.queryname to query globalname
-* add cluster.proxy 
+* add cluster.proxy
 * add DEBUG command exit (send a message to lua service by DEBUG)
 * add DEBUG command run (debug_console command inject)
 * bugfix : socketchannel connect once
@@ -381,6 +420,7 @@ v0.6.0 (2014-8-18)
 
 v0.5.2 (2014-8-11)
 -----------
+
 * Bugfix : httpd request
 * Bugifx : http chunked mode
 * Add : httpc
@@ -388,12 +428,14 @@ v0.5.2 (2014-8-11)
 
 v0.5.1 (2014-8-4)
 -----------
+
 * Bugfix : http module
 * Bugfix : multicast local channel delete
 * Bugfix : socket.read(fd)
 
 v0.5.0 (2014-7-28)
 -----------
+
 * skynet.exit will quit service immediately.
 * Add snax.gateserver, snax.loginserver, snax.msgserver
 * Simplify clientsocket lib
@@ -403,7 +445,8 @@ v0.5.0 (2014-7-28)
 
 v0.4.2 (2014-7-14)
 -----------
-* Bugfix : invalid negative socket id 
+
+* Bugfix : invalid negative socket id
 * Add optional TCP_NODELAY support
 * Add worker thread weight
 * Add skynet.queue
@@ -415,6 +458,7 @@ v0.4.2 (2014-7-14)
 
 v0.4.1 (2014-7-7)
 -----------
+
 * Add SERVICE_NAME in loader
 * Throw error back when skynet.error
 * Add skynet.task
@@ -422,6 +466,7 @@ v0.4.1 (2014-7-7)
 
 v0.4.0 (2014-6-30)
 -----------
+
 * Optimize redis driver `compose_message`.
 * Add module skynet.harbor for monitor harbor connect/disconnect, see test/testharborlink.lua .
 * cluster.open support cluster name.
@@ -433,17 +478,20 @@ v0.4.0 (2014-6-30)
 
 v0.3.2 (2014-6-23)
 ----------
+
 * Bugfix : cluster (double free).
 * Add socket.header() to decode big-endian package header (and fix the bug in cluster).
 
 v0.3.1 (2014-6-16)
 -----------
+
 * Bugfix: lua mongo driver . Hold reply string before decode bson data.
 * More check in bson decoding.
 * Use big-endian for encoding bson objectid.
 
 v0.3.0 (2014-6-2)
 -----------
+
 * Add cluster support
 * Add single node mode
 * Add daemon mode
@@ -454,8 +502,9 @@ v0.3.0 (2014-6-2)
 
 v0.2.1 (2014-5-19)
 -----------
+
 * Bugfix: check all the events already read after socket close
-* Bugfix: socket data in gate service 
+* Bugfix: socket data in gate service
 * Bugfix: boundary problem in harbor service
 * Bugfix: stdin handle is 0
 

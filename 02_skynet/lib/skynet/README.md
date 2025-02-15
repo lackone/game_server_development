@@ -2,9 +2,12 @@
 
 Skynet is a multi-user Lua framework supporting the actor model, often used in games.
 
-[It is heavily used in the Chinese game industry](https://github.com/cloudwu/skynet/wiki/Uses), but is also now spreading to other industries, and to English-centric developers. To visit related sites, visit the Chinese pages using something like Google or Deepl translate.
+[It is heavily used in the Chinese game industry](https://github.com/cloudwu/skynet/wiki/Uses), but is also now
+spreading to other industries, and to English-centric developers. To visit related sites, visit the Chinese pages using
+something like Google or Deepl translate.
 
-The community is friendly and almost all contributors can speak English, so English speakers are welcome to ask questions in [Discussion](https://github.com/cloudwu/skynet/discussions), or submit issues in English.
+The community is friendly and almost all contributors can speak English, so English speakers are welcome to ask
+questions in [Discussion](https://github.com/cloudwu/skynet/discussions), or submit issues in English.
 
 ## Build
 
@@ -43,4 +46,5 @@ Official Lua versions can also be used as long as the Makefile is edited.
 ## How To Use
 
 * Read Wiki for documents https://github.com/cloudwu/skynet/wiki (Written in both English and Chinese)
-* The FAQ in wiki https://github.com/cloudwu/skynet/wiki/FAQ (In Chinese, but you can visit them using something like Google or Deepl translate.)
+* The FAQ in wiki https://github.com/cloudwu/skynet/wiki/FAQ (In Chinese, but you can visit them using something like
+  Google or Deepl translate.)

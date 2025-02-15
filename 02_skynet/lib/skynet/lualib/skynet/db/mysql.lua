@@ -23,55 +23,55 @@ local error = error
 local tonumber = tonumber
 local tointeger = math.tointeger
 
-local _M = {_VERSION = "0.14"}
+local _M = { _VERSION = "0.14" }
 
 -- the following charset map is generated from the following mysql query:
 --   SELECT CHARACTER_SET_NAME, ID
 --   FROM information_schema.collations
 --   WHERE IS_DEFAULT = 'Yes' ORDER BY id;
 local CHARSET_MAP = {
-    _default  = 0,
-    big5      = 1,
-    dec8      = 3,
-    cp850     = 4,
-    hp8       = 6,
-    koi8r     = 7,
-    latin1    = 8,
-    latin2    = 9,
-    swe7      = 10,
-    ascii     = 11,
-    ujis      = 12,
-    sjis      = 13,
-    hebrew    = 16,
-    tis620    = 18,
-    euckr     = 19,
-    koi8u     = 22,
-    gb2312    = 24,
-    greek     = 25,
-    cp1250    = 26,
-    gbk       = 28,
-    latin5    = 30,
-    armscii8  = 32,
-    utf8      = 33,
-    ucs2      = 35,
-    cp866     = 36,
-    keybcs2   = 37,
-    macce     = 38,
-    macroman  = 39,
-    cp852     = 40,
-    latin7    = 41,
-    utf8mb4   = 45,
-    cp1251    = 51,
-    utf16     = 54,
-    utf16le   = 56,
-    cp1256    = 57,
-    cp1257    = 59,
-    utf32     = 60,
-    binary    = 63,
-    geostd8   = 92,
-    cp932     = 95,
-    eucjpms   = 97,
-    gb18030   = 248
+    _default = 0,
+    big5 = 1,
+    dec8 = 3,
+    cp850 = 4,
+    hp8 = 6,
+    koi8r = 7,
+    latin1 = 8,
+    latin2 = 9,
+    swe7 = 10,
+    ascii = 11,
+    ujis = 12,
+    sjis = 13,
+    hebrew = 16,
+    tis620 = 18,
+    euckr = 19,
+    koi8u = 22,
+    gb2312 = 24,
+    greek = 25,
+    cp1250 = 26,
+    gbk = 28,
+    latin5 = 30,
+    armscii8 = 32,
+    utf8 = 33,
+    ucs2 = 35,
+    cp866 = 36,
+    keybcs2 = 37,
+    macce = 38,
+    macroman = 39,
+    cp852 = 40,
+    latin7 = 41,
+    utf8mb4 = 45,
+    cp1251 = 51,
+    utf16 = 54,
+    utf16le = 56,
+    cp1256 = 57,
+    cp1257 = 59,
+    utf32 = 60,
+    binary = 63,
+    geostd8 = 92,
+    cp932 = 95,
+    eucjpms = 97,
+    gb18030 = 248
 }
 
 -- constants
@@ -84,7 +84,7 @@ local COM_STMT_RESET = "\x1a"
 local CURSOR_TYPE_NO_CURSOR = 0x00
 local SERVER_MORE_RESULTS_EXISTS = 8
 
-local mt = {__index = _M}
+local mt = { __index = _M }
 
 -- mysql field value type converters
 local converters = {}
@@ -213,11 +213,11 @@ local function _compute_token(password, scramble)
 
     local i = 0
     return strgsub(stage3, ".",
-        function(x)
-            i = i + 1
-            -- ~ is xor in lua 5.3
-            return strchar(strbyte(x) ~ strbyte(stage1, i))
-        end
+            function(x)
+                i = i + 1
+                -- ~ is xor in lua 5.3
+                return strchar(strbyte(x) ~ strbyte(stage1, i))
+            end
     )
 end
 
@@ -377,7 +377,8 @@ local function _parse_field_packet(data)
     col.type = strbyte(data, pos)
     pos = pos + 1
     local flags, pos = _get_byte2(data, pos)
-    if flags & 0x20 == 0 then -- https://mariadb.com/kb/en/resultset/
+    if flags & 0x20 == 0 then
+        -- https://mariadb.com/kb/en/resultset/
         col.is_signed = true
     end
 
@@ -504,13 +505,13 @@ local function _mysql_login(self, user, password, charset, database, on_connect)
         local token = _compute_token(password, scramble)
         local client_flags = 260047
         local req = strpack("<I4I4c1c23zs1z",
-            client_flags,
-            self._max_packet_size,
-            strchar(charset),
-            strrep("\0", 23),
-            user,
-            token,
-            database
+                client_flags,
+                self._max_packet_size,
+                strchar(charset),
+                strrep("\0", 23),
+                user,
+                token,
+                database
         )
         local authpacket = _compose_packet(self, req)
         sockchannel:request(authpacket, dispatch_resp)
@@ -708,7 +709,7 @@ local function _query_resp(self)
         if err ~= "again" then
             return true, res
         end
-        local multiresultset = {res}
+        local multiresultset = { res }
         multiresultset.multiresultset = true
         local i = 2
         while err == "again" do
@@ -741,8 +742,7 @@ function _M.connect(opts)
     local user = opts.user or ""
     local password = opts.password or ""
     local charset = CHARSET_MAP[opts.charset or "_default"]
-    local channel =
-        socketchannel.channel {
+    local channel = socketchannel.channel {
         host = opts.host,
         port = opts.port or 3306,
         auth = _mysql_login(self, user, password, charset, database, opts.on_connect),
@@ -1009,7 +1009,7 @@ local function _execute_resp(self)
         if err ~= "again" then
             return true, res
         end
-        local mulitresultset = {res}
+        local mulitresultset = { res }
         mulitresultset.mulitresultset = true
         local i = 2
         while err == "again" do
@@ -1063,7 +1063,7 @@ end
 function _M.stmt_reset(self, stmt)
     local querypacket = _compose_stmt_reset(self, stmt)
     local sockchannel = self.sockchannel
-        if not self.query_resp then
+    if not self.query_resp then
         self.query_resp = _query_resp(self)
     end
     return sockchannel:request(querypacket, self.query_resp)
@@ -1082,7 +1082,6 @@ function _M.stmt_close(self, stmt)
     local sockchannel = self.sockchannel
     return sockchannel:request(querypacket)
 end
-
 
 function _M.ping(self)
     local querypacket, er = _compose_ping(self)
@@ -1116,7 +1115,7 @@ local escape_map = {
     ['"'] = '\\"',
 }
 
-function _M.quote_sql_str( str)
+function _M.quote_sql_str(str)
     return strformat("'%s'", strgsub(str, "[\0\b\n\r\t\26\\\'\"]", escape_map))
 end
 

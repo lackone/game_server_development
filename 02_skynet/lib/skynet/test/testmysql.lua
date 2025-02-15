@@ -45,43 +45,43 @@ local function dump(obj)
     return dumpObj(obj, 0)
 end
 
-local function test2( db)
-    local i=1
+local function test2(db)
+    local i = 1
     while true do
-        local    res = db:query("select * from cats order by id asc")
-        print ( "test2 loop times=" ,i,"\n","query result=",dump( res ) )
+        local res = db:query("select * from cats order by id asc")
+        print("test2 loop times=", i, "\n", "query result=", dump(res))
         res = db:query("select * from cats order by id asc")
-        print ( "test2 loop times=" ,i,"\n","query result=",dump( res ) )
+        print("test2 loop times=", i, "\n", "query result=", dump(res))
 
         skynet.sleep(1000)
-        i=i+1
+        i = i + 1
     end
 end
-local function test3( db)
-    local i=1
+local function test3(db)
+    local i = 1
     while true do
-        local    res = db:query("select * from cats order by id asc")
-        print ( "test3 loop times=" ,i,"\n","query result=",dump( res ) )
+        local res = db:query("select * from cats order by id asc")
+        print("test3 loop times=", i, "\n", "query result=", dump(res))
         res = db:query("select * from cats order by id asc")
-        print ( "test3 loop times=" ,i,"\n","query result=",dump( res ) )
+        print("test3 loop times=", i, "\n", "query result=", dump(res))
         skynet.sleep(1000)
-        i=i+1
+        i = i + 1
     end
 end
-local function test4( db)
-	local stmt = db:prepare("SELECT * FROM cats WHERE name=?")
-    print ( "test4 prepare result=",dump( stmt ) )
-	local res = db:execute(stmt,'Bob')
-    print ( "test4 query result=",dump( res ) )
+local function test4(db)
+    local stmt = db:prepare("SELECT * FROM cats WHERE name=?")
+    print("test4 prepare result=", dump(stmt))
+    local res = db:execute(stmt, 'Bob')
+    print("test4 query result=", dump(res))
     db:stmt_close(stmt)
 end
 
 -- 测试存储过程和blob读写
 local function test_sp_blob(db)
-	print("test stored procedure")
-	-- 创建测试表
-	db:query "DROP TABLE IF EXISTS `test`"
-	db:query [[
+    print("test stored procedure")
+    -- 创建测试表
+    db:query "DROP TABLE IF EXISTS `test`"
+    db:query [[
 		CREATE TABLE `test` (
 			`id` int(11) NOT NULL AUTO_INCREMENT,
 			`str` varchar(45) COLLATE utf8mb4_bin DEFAULT NULL,
@@ -93,28 +93,28 @@ local function test_sp_blob(db)
 			UNIQUE KEY `id_UNIQUE` (`id`)
 			) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 	]]
-	-- 创建测试存储过程
-	db:query "DROP PROCEDURE IF EXISTS `get_test`"
-	db:query [[
+    -- 创建测试存储过程
+    db:query "DROP PROCEDURE IF EXISTS `get_test`"
+    db:query [[
 		CREATE PROCEDURE `get_test`(IN p_id int)
 		BEGIN
 			select * from test where id=p_id;
 		END
 	]]
-	local stmt_insert = db:prepare("INSERT test (str,dt,flt,num,blb) VALUES (?,?,?,?,?)")
-	local stmt_csp = db:prepare("call get_test(?)")
-	local test_blob = string.char(0xFF,0x8F,0x03,0x04,0x0a,0x0b,0x0d,0x0e,0x10,0x20,0x30,0x40)
+    local stmt_insert = db:prepare("INSERT test (str,dt,flt,num,blb) VALUES (?,?,?,?,?)")
+    local stmt_csp = db:prepare("call get_test(?)")
+    local test_blob = string.char(0xFF, 0x8F, 0x03, 0x04, 0x0a, 0x0b, 0x0d, 0x0e, 0x10, 0x20, 0x30, 0x40)
 
-	local r = db:execute(stmt_insert,'test_str','2020-3-20 15:30:40',3.1415,89,test_blob)
-	print("insert result : insert_id",r.insert_id,"affected_rows",r.affected_rows
-		,"server_status",r.server_status,"warning_count",r.warning_count)
+    local r = db:execute(stmt_insert, 'test_str', '2020-3-20 15:30:40', 3.1415, 89, test_blob)
+    print("insert result : insert_id", r.insert_id, "affected_rows", r.affected_rows
+    , "server_status", r.server_status, "warning_count", r.warning_count)
 
-	r = db:execute(stmt_csp,1)
-	local rs = r[1][1]
-	print("call get_test() result : str",rs.str,"dt",rs.dt,"flt",rs.flt,"num",rs.num
-		,"blb len",#rs.blb,"equal",test_blob==rs.blb)
+    r = db:execute(stmt_csp, 1)
+    local rs = r[1][1]
+    print("call get_test() result : str", rs.str, "dt", rs.dt, "flt", rs.flt, "num", rs.num
+    , "blb len", #rs.blb, "equal", test_blob == rs.blb)
 
-	print("test stored procedure ok")
+    print("test stored procedure ok")
 end
 
 local function test_signed(db)
@@ -134,69 +134,68 @@ end
 
 skynet.start(function()
 
-	local function on_connect(db)
-		db:query("set charset utf8mb4");
-	end
-	local db=mysql.connect({
-		host="127.0.0.1",
-		port=3306,
-		database="skynet",
-		user="root",
-		password="123456",
-                charset="utf8mb4",
-		max_packet_size = 1024 * 1024,
-		on_connect = on_connect
-	})
-	if not db then
-		print("failed to connect")
-	end
-	print("testmysql success to connect to mysql server")
+    local function on_connect(db)
+        db:query("set charset utf8mb4");
+    end
+    local db = mysql.connect({
+        host = "127.0.0.1",
+        port = 3306,
+        database = "skynet",
+        user = "root",
+        password = "123456",
+        charset = "utf8mb4",
+        max_packet_size = 1024 * 1024,
+        on_connect = on_connect
+    })
+    if not db then
+        print("failed to connect")
+    end
+    print("testmysql success to connect to mysql server")
 
-	local res = db:query("drop table if exists cats")
-	res = db:query("create table cats "
-		               .."(id serial primary key, ".. "name varchar(5))")
-	print( dump( res ) )
+    local res = db:query("drop table if exists cats")
+    res = db:query("create table cats "
+            .. "(id serial primary key, " .. "name varchar(5))")
+    print(dump(res))
 
-	res = db:query("insert into cats (name) "
-                             .. "values (\'Bob\'),(\'\'),(null)")
-	print ( dump( res ) )
+    res = db:query("insert into cats (name) "
+            .. "values (\'Bob\'),(\'\'),(null)")
+    print(dump(res))
 
-	res = db:query("select * from cats order by id asc")
-	print ( dump( res ) )
+    res = db:query("select * from cats order by id asc")
+    print(dump(res))
 
-	-- 测试存储过程和二进制blob
-	test_sp_blob(db)
-	
-	test_signed(db)
+    -- 测试存储过程和二进制blob
+    test_sp_blob(db)
+
+    test_signed(db)
 
     -- test in another coroutine
-	skynet.fork( test2, db)
-    skynet.fork( test3, db)
-	skynet.fork( test4, db)
-	-- multiresultset test
-	res = db:query("select * from cats order by id asc ; select * from cats")
-	print ("multiresultset test result=", dump( res ) )
+    skynet.fork(test2, db)
+    skynet.fork(test3, db)
+    skynet.fork(test4, db)
+    -- multiresultset test
+    res = db:query("select * from cats order by id asc ; select * from cats")
+    print("multiresultset test result=", dump(res))
 
-	print ("escape string test result=", mysql.quote_sql_str([[\mysql escape %string test'test"]]) )
+    print("escape string test result=", mysql.quote_sql_str([[\mysql escape %string test'test"]]))
 
-	-- bad sql statement
-	local res =  db:query("select * from notexisttable" )
-	print( "bad query test result=" ,dump(res) )
+    -- bad sql statement
+    local res = db:query("select * from notexisttable")
+    print("bad query test result=", dump(res))
 
-    local i=1
+    local i = 1
     while true do
-        local    res = db:query("select * from cats order by id asc")
-        print ( "test1 loop times=" ,i,"\n","query result=",dump( res ) )
+        local res = db:query("select * from cats order by id asc")
+        print("test1 loop times=", i, "\n", "query result=", dump(res))
 
         res = db:query("select * from cats order by id asc")
-        print ( "test1 loop times=" ,i,"\n","query result=",dump( res ) )
-
+        print("test1 loop times=", i, "\n", "query result=", dump(res))
 
         skynet.sleep(1000)
-        i=i+1
+        i = i + 1
     end
 
-	--db:disconnect()
-	--skynet.exit()
+    --db:disconnect()
+    --skynet.exit()
 end)
 

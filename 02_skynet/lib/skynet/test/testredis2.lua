@@ -1,13 +1,13 @@
 local skynet = require "skynet"
-local redis  = require "skynet.db.redis"
+local redis = require "skynet.db.redis"
 
 local db
 
 function add1(key, count)
     local t = {}
     for i = 1, count do
-        t[2*i -1] = "key" ..i
-        t[2*i] = "value" .. i
+        t[2 * i - 1] = "key" .. i
+        t[2 * i] = "value" .. i
     end
     db:hmset(key, table.unpack(t))
 end
@@ -15,8 +15,8 @@ end
 function add2(key, count)
     local t = {}
     for i = 1, count do
-        t[2*i -1] = "key" ..i
-        t[2*i] = "value" .. i
+        t[2 * i - 1] = "key" .. i
+        t[2 * i] = "value" .. i
     end
     table.insert(t, 1, key)
     db:hmset(t)
@@ -26,7 +26,7 @@ function __init__()
     db = redis.connect {
         host = "127.0.0.1",
         port = 6300,
-        db   = 0,
+        db = 0,
         auth = "foobared"
     }
     print("dbsize:", db:dbsize())

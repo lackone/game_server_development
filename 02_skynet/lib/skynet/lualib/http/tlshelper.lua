@@ -6,7 +6,7 @@ local tlshelper = {}
 function tlshelper.init_requestfunc(fd, tls_ctx)
     local readfunc = socket.readfunc(fd)
     local writefunc = socket.writefunc(fd)
-    return function (hostname)
+    return function(hostname)
         tls_ctx:set_ext_host_name(hostname)
         local ds1 = tls_ctx:handshake()
         writefunc(ds1)
@@ -20,11 +20,10 @@ function tlshelper.init_requestfunc(fd, tls_ctx)
     end
 end
 
-
 function tlshelper.init_responsefunc(fd, tls_ctx)
     local readfunc = socket.readfunc(fd)
     local writefunc = socket.writefunc(fd)
-    return function ()
+    return function()
         while not tls_ctx:finished() do
             local ds1 = readfunc()
             local ds2 = tls_ctx:handshake(ds1)
@@ -38,7 +37,7 @@ function tlshelper.init_responsefunc(fd, tls_ctx)
 end
 
 function tlshelper.closefunc(tls_ctx)
-    return function ()
+    return function()
         tls_ctx:close()
     end
 end
@@ -49,7 +48,7 @@ function tlshelper.readfunc(fd, tls_ctx)
         return ""
     end
     local read_buff = ""
-    return function (sz)
+    return function(sz)
         if not sz then
             local s = ""
             if #read_buff == 0 then
@@ -65,8 +64,8 @@ function tlshelper.readfunc(fd, tls_ctx)
                 local s = tls_ctx:read(ds)
                 read_buff = read_buff .. s
             end
-            local  s = string.sub(read_buff, 1, sz)
-            read_buff = string.sub(read_buff, sz+1, #read_buff)
+            local s = string.sub(read_buff, 1, sz)
+            read_buff = string.sub(read_buff, sz + 1, #read_buff)
             return s
         end
     end
@@ -74,14 +73,14 @@ end
 
 function tlshelper.writefunc(fd, tls_ctx)
     local writefunc = socket.writefunc(fd)
-    return function (s)
+    return function(s)
         local ds = tls_ctx:write(s)
         return writefunc(ds)
     end
 end
 
 function tlshelper.readallfunc(fd, tls_ctx)
-    return function ()
+    return function()
         local ds = socket.readall(fd)
         local s = tls_ctx:read(ds)
         return s
