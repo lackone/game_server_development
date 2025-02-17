@@ -11,9 +11,13 @@
     03_process_control      流程控制
     04_string               字符串
     05_table_array          数组
-    06_table_map            k-v结构
+    06_table_map            k-v结构map
     07_function             函数
     08_function_advance     函数进阶
+    09_iterator_for         迭代器 Iterator 与泛型 for
+    10_pattern_matching     模式匹配 PatternMatching
+    11_meta_table           元表与元方法 Meta
+    12_object_oriented      面向对象 Object Oriented
 ```
 
 《百万在线大型游戏服务端开发》 罗培羽 笔记
