@@ -18,6 +18,13 @@
     10_pattern_matching     模式匹配 PatternMatching
     11_meta_table           元表与元方法 Meta
     12_object_oriented      面向对象 Object Oriented
+    13_env                  环境 _Env
+    14_require              模块化 Require
+    15_coroutine            协程 Coroutine
+    16_stdlib               标准库 Stdlib
+    17_collect_garbage      垃极回收 CollectGarbage
+    18_lua_c_c++            Lua 与 C/C++交互栈
+    19_lua_extend_c         Lua 扩展 C 程序
 ```
 
 《百万在线大型游戏服务端开发》 罗培羽 笔记
