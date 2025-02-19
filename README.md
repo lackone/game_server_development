@@ -24,7 +24,8 @@
     16_stdlib               标准库 Stdlib
     17_collect_garbage      垃极回收 CollectGarbage
     18_lua_c_c++            Lua 与 C/C++交互栈
-    19_lua_extend_c         Lua 扩展 C 程序
+    19_lua_extend_c         Lua 扩展 C 程序(C/C++调lua)
+    20_c_improves_lua       C 提升 Lua 效率(lua调C/C++)
 ```
 
 《百万在线大型游戏服务端开发》 罗培羽 笔记

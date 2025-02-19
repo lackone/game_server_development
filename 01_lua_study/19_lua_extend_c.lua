@@ -51,15 +51,18 @@ function test1()
     print("print test1")
 end
 
+--调用 lua 函数-有参无返回
 function test2(a, b, c)
     print("test2", a, b, c)
 end
 
+--调用 lua 函数-有参有返回
 function test3(a, b, c)
     print("test3", a, b, c)
     return 11, 22, 33
 end
 
+--调用 lua 全局表字段函数
 tab = {
     func = function(a, b, c)
         print(a, b, c)
