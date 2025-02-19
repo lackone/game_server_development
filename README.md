@@ -26,6 +26,11 @@
     18_lua_c_c++            Lua 与 C/C++交互栈
     19_lua_extend_c         Lua 扩展 C 程序(C/C++调lua)
     20_c_improves_lua       C 提升 Lua 效率(lua调C/C++)
+    21_lua_c_api            Lua_C_api 编写技巧
+    22_full_userdata        自定类型 Full Userdata
+    23_light_userdata       轻自定类型 Light UserData
+    24_lua_state_thread     Lua 的状态与线程
+    25_lua_3rdlib           第三方库 3rdlib
 ```
 
 《百万在线大型游戏服务端开发》 罗培羽 笔记
