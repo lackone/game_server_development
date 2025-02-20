@@ -1,0 +1,10 @@
+include "config.path"
+
+thread = 8
+logger = nil
+logpath = "."
+harbor = 0
+start = "cluster_node"
+node = "node1"
+bootstrap = "snlua bootstrap"	-- The service for bootstrap
+cpath = root.."cservice/?.so"

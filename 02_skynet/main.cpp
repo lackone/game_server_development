@@ -68,6 +68,38 @@ using namespace std;
 //socket.write(fd, data)            把数据写入队列
 //socket.close(fd)                  关闭连接，阻塞方法
 
+
+//学习数据库模块
+//skynet.db.mysql模块提供操作MySQL数据库的方法
+//mysql.connect()   连接数据库
+//db:query(sql)   执行sql语句
+
+
+//监控服务状态
+//Skynet自带了一个调试控制台服务debug_console，启动它之后，可以查看节点的内部状态。
+//skynet.newservice("debug_console", 8000)
+//telnet 127.0.0.1 8000
+//list   list指令用于列出所有的服务，以及启动服务的参数。
+//mem指令 mem指令用于显示所有Lua服务占用的内存。
+//stat指令  stat指令用于列出所有Lua服务的CPU时间、处理的消息总数（message）、消息队列长度（mqlen）、被挂起的请求数量（task）等。
+//netstat指令  netstat指令用于列出网络连接的概况。
+
+
+//使用节点集群建立分布式系统
+//Skynet提供了cluster集群模式，可让不同节点中的服务相互通信。
+//cluster.reload(cfg)  让本节点重新加载节点配置
+//cluster.open(node)   启动节点，节点1需要调用cluster.open(node1)，节点2需要cluster.open(node2)
+//cluster.send(node, address, cmd, ...)  向node节点，地址address的服务推送消息
+//cluster.call(node, address, cmd, ...)  与send功能相似，不同的是，它是阻塞方法
+//cluster.proxy(node, address)  为远程节点上的服务创建一个本地代理，它会返回代理对象，之后可以用skynet.send,skynet.call操作该代理
+
+//使用代理
+//先将节点2的pong服务作为代理（变量pong），之后便可以将它视为本地服务，在此方法中通过 skynet.send或skynet.call发送消息。
+
+//协程的作用
+//Skynet服务在收到消息时，会创建一个协程，在协程中会运行消息处理方法（即用skynet.dispatch设置的回调方法）。
+//这意味着，如果在消息处理方法中调用阻塞API（如skynet.call、 skynet.sleep、socket.read），服务不会被卡住（仅仅是处理消息的协程被卡住），执行效率得以提高，但程序的执行时序将得不到保证。
+
 int main() {
 
     return 0;
