@@ -8,3 +8,4 @@ add_executable(game_server_development main.cpp)
 
 add_subdirectory(01_role_start)
 add_subdirectory(02_skynet)
+add_subdirectory(03_case_ball_battle)
