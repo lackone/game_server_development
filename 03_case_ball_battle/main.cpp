@@ -70,6 +70,14 @@ using namespace std;
 //固定长度法     每次以相同的长度发送数据，假定每条信息为10字符，那么hello，test，这两条信息发送成 hello..... test...... 其中.表示填充字符，接收方每次读取10个字符
 //结束符号法     规定一个结束符号，作为消息间的分隔符，假定结速符号为$，那么hello，test，这两条信息发送成hello$ test$，接收方不停读取数据，直到$出现为止
 
+//协议
+//进入战场协议 enter,玩家ID,坐标,尺寸
+//战场信息协议 balllist,玩家ID,坐标,尺寸    foodlist,食物ID,坐标
+//生成食物协议 addfood,食物ID,坐标
+//移动协议    shift,x,y    move,玩家ID,坐标
+//吃食物协议  eat,玩家ID,食物ID,新尺寸
+//离开协议    leave,玩家ID
+
 int main() {
     return 0;
 }
