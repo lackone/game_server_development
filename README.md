@@ -42,4 +42,6 @@
 04_skynet_advanced      Skynet进阶技法
 05_C++_concurrency      你好，C++并发世界
 06_tcp_network_module   图解TCP网络模块
+07_embed_lua            嵌入Lua脚本语言
+08_sync_algorithm       同步算法
 ```
