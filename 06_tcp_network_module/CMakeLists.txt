@@ -7,7 +7,7 @@ aux_source_directory(./src DIR_SRCS)
 
 # 库文件
 #find_package (Threads)
-#target_link_libraries (05_C++_concurrency ${cmake_THREAD_LIBS_INIT})
+#target_link_libraries (06_tcp_network_module ${cmake_THREAD_LIBS_INIT})
 
 # 指定生成目标文件
 add_executable(06_tcp_network_module ${DIR_SRCS})

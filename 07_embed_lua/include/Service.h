@@ -13,6 +13,13 @@
 #include "ServiceMsg.h"
 #include "Sunnet.h"
 #include "ConnWriter.h"
+#include "LuaAPI.h"
+
+extern "C" {
+    #include "lua.h"
+    #include "lauxlib.h"
+    #include "lualib.h"
+}
 
 using namespace std;
 
@@ -37,6 +44,9 @@ public:
 
     //业务逻辑（仅测试使用）
     unordered_map<int, shared_ptr<ConnWriter>> writers;
+private:
+    //Lua虚拟机
+    lua_State *lua_state;
 public:
     Service();
 
