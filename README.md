@@ -44,4 +44,5 @@
 06_tcp_network_module   图解TCP网络模块
 07_embed_lua            嵌入Lua脚本语言
 08_sync_algorithm       同步算法
+09_hot_update           热更新
 ```
