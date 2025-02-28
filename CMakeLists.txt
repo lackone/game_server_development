@@ -15,3 +15,5 @@ add_subdirectory(06_tcp_network_module)
 add_subdirectory(07_embed_lua)
 add_subdirectory(08_sync_algorithm)
 add_subdirectory(09_hot_update)
+
+add_subdirectory(21_network_programming_basic)
